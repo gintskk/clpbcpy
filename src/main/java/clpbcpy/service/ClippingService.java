@@ -8,7 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.transaction.Transactional;
 import java.net.URI;
+import java.util.List;
 
 @Service
 public class ClippingService {
@@ -34,5 +36,15 @@ public class ClippingService {
 
     public Clipping getById(long id) {
         return clippingRepository.getById(id).orElseThrow(ClippingNotFoundException::new);
+    }
+
+    @Transactional
+    public ResponseEntity<?> deleteById(long id){
+        clippingRepository.deleteById(id);
+        return ResponseEntity.ok().build();
+    }
+
+    public List<Clipping> getAll() {
+        return clippingRepository.findAll();
     }
 }
