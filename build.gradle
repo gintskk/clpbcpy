@@ -1,0 +1,44 @@
+plugins {
+    id 'org.springframework.boot' version '2.3.5.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id 'java'
+}
+
+version '0.1'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //Default
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+
+    //Project Lombok
+    compileOnly 'org.projectlombok:lombok:1.18.16'
+    annotationProcessor 'org.projectlombok:lombok:1.18.16'
+    testCompileOnly 'org.projectlombok:lombok:1.18.16'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.16'
+
+    //Spring
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.data:spring-data-commons'
+    implementation 'org.springframework.data:spring-data-jpa:2.4.3'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    compile group: 'com.h2database', name: 'h2'
+
+    implementation 'org.hibernate:hibernate-entitymanager'
+    compile group: 'org.hibernate.orm', name: 'hibernate-core', version: '6.0.0.Alpha6'
+
+    implementation 'org.json:json:20201115'
+}
+
+test {
+    useJUnitPlatform()
+}
+springBoot {
+    mainClassName = "clpbcpy.Main"
+}
